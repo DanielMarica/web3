@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import ExpenseItem from '../components/ExpenseItem';
-import ExpenseAdd from '../components/ExpenseAdd';
-import ExpenseSorter from '../components/ExpenseSorter';
-import type { Expense } from '../types/Expense';
+import ExpenseItem from '../components/ExpenseItem.tsx';
+import ExpenseAdd from '../components/ExpenseAdd.tsx';
+import ExpenseSorter from '../components/ExpenseSorter.tsx';
+import type { Expense } from '../types/Expense.ts';
 
 export default function Home() {
+  const host = import.meta.env.VITE_API_URL || 'http://unknown-api-url.com';
   const [sortingAlgo, setSortingAlgo] = useState<(a: Expense, b: Expense) => number>(() => () => 0);
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const sendApiRequestandHandleError = async (method: string = 'GET', path: string, body?: any) => {
+  const sendApiRequestandHandleError = async (method: string = 'GET', path: string, body?: Expense) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/${path}`, {
+      const response = await fetch(`${host}/api/${path}`, {
         method: method,
         headers: body ? { 'Content-Type': 'application/json' } : {},
         body: body ? JSON.stringify(body) : null,
