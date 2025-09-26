@@ -1,0 +1,38 @@
+.expense-item {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.expense-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.expense-amount {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.expense-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+}
+
+.expense-id {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
